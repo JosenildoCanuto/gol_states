@@ -3,13 +3,13 @@ import "../src/Statistics.css";
 import Players from "../src/components/Players";
 import { PlayerScores, ApiResponse } from "../types"
 
-function Scores() {
+function Assists() {
   const [statistics, setStatistics] = useState<PlayerScores[]>([]);
   const apiKey = process.env.REACT_APP_API_KEY;
 
 
   useEffect(() => {
-    getStatistics();
+    getAssists();
   }, []);
 
   const currentDate = new Date();
@@ -22,8 +22,8 @@ function Scores() {
     year = currentDate.getFullYear();
   }
 
-  async function getStatistics() {
-    const url = `https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=39&season=${year}`;
+  async function getAssists() {
+    const url = `https://api-football-v1.p.rapidapi.com/v3/players/topassists?league=39&season=${year}`;
     const options = {
       method: "GET",
       headers: {
@@ -45,7 +45,7 @@ function Scores() {
             logo: item.statistics[0].team.logo,
             id: item.statistics[0].team.id,
           },
-          goals: { total: item.statistics[0].goals.total },
+          goals: { total: item.statistics[0].goals.assists },
         })
       );
 
@@ -67,7 +67,7 @@ function Scores() {
               teamLogo={player.team.logo}
               teamName={player.team.name}
               teamId={player.team.id}
-              goals={player.goals.total}
+              assists={player.goals.total}
             />
           </div>
         ))}
@@ -76,4 +76,4 @@ function Scores() {
   );
 }
 
-export default Scores;
+export default Assists;

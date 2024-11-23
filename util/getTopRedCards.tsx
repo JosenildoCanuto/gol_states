@@ -1,15 +1,15 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import "../src/Statistics.css";
 import Players from "../src/components/Players";
 import { PlayerScores, ApiResponse } from "../types"
 
-function Scores() {
+function RedCard() {
   const [statistics, setStatistics] = useState<PlayerScores[]>([]);
   const apiKey = process.env.REACT_APP_API_KEY;
 
-
   useEffect(() => {
-    getStatistics();
+    getRedCard();
   }, []);
 
   const currentDate = new Date();
@@ -22,8 +22,8 @@ function Scores() {
     year = currentDate.getFullYear();
   }
 
-  async function getStatistics() {
-    const url = `https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=39&season=${year}`;
+  async function getRedCard() {
+    const url = `https://api-football-v1.p.rapidapi.com/v3/players/topredcards?league=39&season=${year}`;
     const options = {
       method: "GET",
       headers: {
@@ -45,10 +45,10 @@ function Scores() {
             logo: item.statistics[0].team.logo,
             id: item.statistics[0].team.id,
           },
-          goals: { total: item.statistics[0].goals.total },
+          cards: { red: item.statistics[0].cards.red },
         })
       );
-
+      console.log(statistics)
       setStatistics(playersData);
     } catch (error) {
       console.error(error);
@@ -67,7 +67,7 @@ function Scores() {
               teamLogo={player.team.logo}
               teamName={player.team.name}
               teamId={player.team.id}
-              goals={player.goals.total}
+              red={player.cards.red}
             />
           </div>
         ))}
@@ -76,4 +76,4 @@ function Scores() {
   );
 }
 
-export default Scores;
+export default RedCard;

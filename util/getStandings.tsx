@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import { Standing } from "../types";
 import Team from "../src/components/Team";
@@ -6,11 +5,11 @@ import "../src/Team.css";
 import "../src/App.css";
 
 function FootballStandings() {
-  const apiKey = import.meta.env.VITE_API_KEY;
   const [standings, setStandings] = useState<Standing[]>([]);
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
-      getStandings();
+    getStandings();
   }, []);
 
   const currentDate = new Date();
@@ -45,7 +44,7 @@ function FootballStandings() {
   return (
     <div>
       <ul>
-        {standings.slice(0,4).map((team, index) => (
+        {standings.slice(0, 4).map((team, index) => (
           <div
             className="grid grid-cols-2 max-w-96 items-center mx-9"
             key={index}

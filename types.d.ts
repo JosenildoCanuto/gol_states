@@ -67,80 +67,37 @@ type StatisticsPlayer = {
     photo: string;
   };
   
-  type Statistics = {
-    team: {
-      id: number;
+  type PlayerScores = {
+    name: string;
+    photo: string;
+    team: { name: string; logo: string; id: number };
+    goals: { total?: number; assists?: number };
+    cards: { yellow?: number; red?: number }
+  };
+
+  type ApiResponse = {
+    player: {
       name: string;
-      logo: string;
+      photo: string;
     };
-    league: {
-      id: number;
-      name: string;
-      country: string;
-      logo: string;
-      flag: string;
-      season: number;
-    };
-    games: {
-      appearences: number;
-      lineups: number;
-      minutes: number;
-      number: number | null;
-      position: string;
-      rating: string;
-      captain: boolean;
-    };
-    substitutes: {
-      in: number;
-      out: number;
-      bench: number;
-    };
-    shots: {
-      total: number;
-      on: number;
-    };
-    goals: {
-      total: number;
-      conceded: number | null;
-      assists: number;
-      saves: number;
-    };
-    passes: {
-      total: number;
-      key: number;
-      accuracy: number;
-    };
-    tackles: {
-      total: number;
-      blocks: number;
-      interceptions: number;
-    };
-    duels: {
-      total: number;
-      won: number;
-    };
-    dribbles: {
-      attempts: number;
-      success: number;
-      past: number | null;
-    };
-    fouls: {
-      drawn: number;
-      committed: number;
-    };
-    cards: {
-      yellow: number;
-      yellowred: number;
-      red: number;
-    };
-    penalty: {
-      won: number;
-      commited: number | null;
-      scored: number;
-      missed: number;
-      saved: number | null;
-    };
+    statistics: [
+      {
+        team: {
+          name: string;
+          logo: string;
+          id: number;
+        };
+        goals: {
+          total?: number;
+          assists?: number;
+        };
+        cards: {
+          yellow?: number;
+          red?: number;
+        }
+      }
+    ];
   };
   
 
-export { Standing, StatisticsPlayer }
+export { Standing, PlayerScores, ApiResponse }
