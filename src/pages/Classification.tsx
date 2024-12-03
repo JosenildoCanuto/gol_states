@@ -1,4 +1,4 @@
-import FootballStandings from "../../util/getStandings";
+import Standings from "../../util/getStandings";
 
 function Classification() {
   return (
@@ -7,7 +7,7 @@ function Classification() {
         <div>
           <div>
             <ul className="list-disc">
-              <li className="li-color font-bold text-2xl mx-9">Classification</li>
+              <li className="li-color font-bold text-2xl mx-9">Classificação</li>
             </ul>
             <div className="flex flex-col">
               <div className="grid grid-cols-2 text-xs font-bold mx-9 my-3">
@@ -24,7 +24,7 @@ function Classification() {
                   <div>SG</div>
                 </div>
               </div>
-              <FootballStandings />
+              <Standings />
             </div>
           </div>
         </div>

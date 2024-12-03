@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
 import "../src/Statistics.css";
 import Players from "../src/components/Players";
-import { PlayerScores, ApiResponse } from "../types"
+import { PlayerScores, ApiResponse } from "../types";
+import Loading from "../src/components/Loading";
+import { useParams } from "react-router-dom";
 
-function Scores() {
+interface ScoresProps {
+  onLoad?: () => void;
+}
+
+function Scores({ onLoad }: ScoresProps) {
+  const { leagueId } = useParams();
   const [statistics, setStatistics] = useState<PlayerScores[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const apiKey = process.env.REACT_APP_API_KEY;
 
-
   useEffect(() => {
-    getStatistics();
-  }, []);
+    if (leagueId) {
+      getStatistics(leagueId);
+    }
+  }, [leagueId]);
 
   const currentDate = new Date();
   const month: number = currentDate.getMonth();
@@ -22,8 +31,9 @@ function Scores() {
     year = currentDate.getFullYear();
   }
 
-  async function getStatistics() {
-    const url = `https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=39&season=${year}`;
+  async function getStatistics(leagueId: string) {
+    setIsLoading(true);
+    const url = `https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=${leagueId}&season=${year}`;
     const options = {
       method: "GET",
       headers: {
@@ -50,28 +60,40 @@ function Scores() {
       );
 
       setStatistics(playersData);
+
+      if (onLoad) onLoad();
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
   return (
     <div>
-      <div>
-        {statistics.slice(0,4).map((player, index) => (
-          <div key={index} className="mx-9">
-            <Players
-              id={index}
-              name={player.name}
-              photo={player.photo}
-              teamLogo={player.team.logo}
-              teamName={player.team.name}
-              teamId={player.team.id}
-              goals={player.goals.total}
-            />
-          </div>
-        ))}
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : statistics.length > 0 ? (
+        <div>
+          {statistics.map((player, index) => (
+            <div key={index} className="mx-9">
+              <Players
+                id={index}
+                name={player.name}
+                photo={player.photo}
+                teamLogo={player.team.logo}
+                teamName={player.team.name}
+                teamId={player.team.id}
+                goals={player.goals.total}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-white w-full h-full flex justify-center items-center">
+          No data available.
+        </p>
+      )}
     </div>
   );
 }

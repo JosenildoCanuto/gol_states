@@ -98,6 +98,41 @@ type StatisticsPlayer = {
       }
     ];
   };
+
+  type Matches = {
+    fixtures: {
+      id?: number;
+      date?: string;
+      timezone?: string;
+      timestamp?: number;
+      venue: {
+        name?: string,
+        city?: string
+      }
+    },
+    league: {
+      id?: number,
+      name?: string,
+      country?: string,
+      logo?: string,
+      season?: string
+    },
+    teams: {
+      home: Team,
+      away: Team
+    },
+    goals:{
+      home: number,
+      away: number
+    }
+  }
+
+  type Team = {
+    id: number,
+    name: string,
+    logo: string,
+    winner?: boolean
+  }
   
 
-export { Standing, PlayerScores, ApiResponse }
+export { Standing, PlayerScores, ApiResponse, Matches }
