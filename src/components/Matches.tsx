@@ -1,4 +1,8 @@
 import Liverpool from "../assets/liverpool_logo.png";
+import Saint from "../assets/saint.png";
+import Reims from "../assets/reims.png";
+import Leipzig from "../assets/rbLeipzig.png";
+import { Link } from "react-router-dom";
 
 interface MatchesProps {
   id: number;
@@ -12,7 +16,12 @@ interface MatchesProps {
   goalsAway: number;
 }
 
-const teamWithRectangularImages = [40];
+const customImages: Record<number, string> = {
+  40: Liverpool,
+  93: Reims,
+  173: Leipzig,
+  1063: Saint,
+};
 
 function Matche(props: MatchesProps) {
   const {
@@ -27,27 +36,30 @@ function Matche(props: MatchesProps) {
     teamAwayId,
   } = props;
 
-  const isHomeRectangular = teamWithRectangularImages.includes(teamHomeId);
-  const isAwayRectangular = teamWithRectangularImages.includes(teamAwayId);
-
-  const finalHomeImage  = isHomeRectangular ? Liverpool : teamHomeLogo;
-  const finalAwayImage  = isAwayRectangular ? Liverpool : teamAwayLogo;
-
+  const homeLogo = customImages[teamHomeId] ?? teamHomeLogo;
+  const awayLogo = customImages[teamAwayId] ?? teamAwayLogo;
 
   return (
-    <div key={id} className="flex justify-center items-center width h-44 p-5 bg-matches bg-opacity-20 rounded-3xl border border-slate-950 hover:border-blue-700">
-      <div className="w-40 flex flex-col justify-center items-center gap-2">
-        <img src={finalHomeImage} alt={teamHomeName} className="w-16 gap-4" />
-        <p className="text-xs text-center font-medium">{teamHomeName}</p>
+    <Link to={`/match/${id}`}>
+      <div
+        key={id}
+        className="flex justify-center items-center width h-44 p-5 bg-matches bg-opacity-20 rounded-3xl border border-slate-950 hover:border-blue-700"
+      >
+        <div className="w-40 flex flex-col justify-center items-center gap-2">
+          <img src={homeLogo} alt={teamHomeName} className="w-16 gap-4" />
+          <p className="text-xs text-center font-medium">{teamHomeName}</p>
+        </div>
+        <div className="flex justify-center items-center">
+          <p className="text-2xl font-semibold">
+            {goalsHome} - {goalsAway}
+          </p>
+        </div>
+        <div className="w-40 flex flex-col justify-center items-center gap-2">
+          <img src={awayLogo} alt={teamAwayName} className="w-16 gap-4" />
+          <p className="text-xs text-center font-medium">{teamAwayName}</p>
+        </div>
       </div>
-      <div className="flex justify-center items-center">
-        <p className="text-2xl font-semibold">{goalsHome} - {goalsAway}</p>
-      </div>
-      <div className="w-40 gap-1 flex flex-col justify-center items-center gap-2">
-        <img src={finalAwayImage} alt={teamAwayName} className="w-16 gap-4" />
-        <p className="text-xs text-center font-medium">{teamAwayName}</p>
-      </div>
-    </div>
+    </Link>
   );
 }
 
