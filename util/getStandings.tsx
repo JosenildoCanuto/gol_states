@@ -4,13 +4,12 @@ import Team from "../src/components/Team";
 import "../src/App.css";
 import { useParams } from "react-router-dom";
 import Loading from "../src/components/Loading";
-import React from "react";
 
 function Standings() {
   const { leagueId } = useParams();
   const [standings, setStandings] = useState<Standing[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     if (leagueId) {
@@ -34,7 +33,7 @@ function Standings() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
+        "x-rapidapi-key": apiKey,
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };

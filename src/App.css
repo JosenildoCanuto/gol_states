@@ -19,10 +19,9 @@ body {
   color: #1d5eee;
 }
 
-.margin {
-  margin-left: 10rem;
-  margin-right: 10rem;
-  margin-top: 2rem;
+.w-objects {
+  max-width: 83rem;
+  margin: 2rem auto;
 }
 
 .width {
@@ -64,9 +63,9 @@ body {
   height: 100vh;
 }
 
-.center {
-  /* gap: 2rem; */
-  width: 100%;
-  max-width: 520px;
-  margin: 2rem auto;
+.bg-matcheDetails{
+  background-image: url(../src/assets/bg-gameDetails1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

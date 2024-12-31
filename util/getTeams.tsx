@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import "./team.css";
 import { useParams } from "react-router-dom";
@@ -6,12 +7,13 @@ import Loading from "../src/components/Loading";
 import PlayerTeams from "../src/components/PlayersTeamHome";
 import PlayerTeamHome from "../src/components/PlayersTeamHome";
 import PlayerTeamAway from "../src/components/PlayersTeamAway";
+import HeaderScalition from "../src/components/HeaderEscalation";
 
 function Teams() {
   const { matchId } = useParams();
   const [matchDetails, setMatchDetails] = useState<MatchResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  // const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     if (matchId) {
@@ -25,7 +27,7 @@ function Teams() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
+        "x-rapidapi-key": apiKey,
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
@@ -73,19 +75,11 @@ function Teams() {
               {homeTeam && (
                 <div>
                   <div className="bg-zinc-800 m-2">
-                    <div className="bg-matches flex justify-center h-40 py-4">
-                      <img
-                        src={matchDetails.teams.home.logo}
-                        alt=""
-                        className="w-14"
-                      />
-                    </div>
-                    <div className="bg-text">
-                      <p className="text-center font-semibold py-2">
-                        Escalação inicial
-                      </p>
-                    </div>
-                    <p className="text-center bg-formation font-bold">{homeTeam.formation}</p>
+                    <HeaderScalition
+                      id={matchDetails.teams.home.id}
+                      img={matchDetails.teams.home.logo}
+                      formation={homeTeam.formation}
+                    />
                     <div className="py-2">
                       {homeTeam.startXI.map((player, index) => (
                         <div key={index}>
@@ -101,23 +95,16 @@ function Teams() {
                 </div>
               )}
             </div>
-            <div className="flex">
+            <div>
               {awayTeam && (
-                <div className="rounded-md">
+                <div className="h-full w-full">
                   <div className="bg-zinc-800 m-2">
-                    <div className="bg-matches flex justify-center py-4">
-                      <img
-                        src={matchDetails.teams.away.logo}
-                        alt=""
-                        className="w-14"
-                      />
-                    </div>
-                    <div className="bg-text">
-                      <p className="text-center font-semibold py-2">
-                        Escalação inicial
-                      </p>
-                    </div>
-                      <p className="text-center font-bold bg-formation">{awayTeam.formation}</p>
+                    <HeaderScalition
+                      id={matchDetails.teams.away.id}
+                      img={matchDetails.teams.away.logo}
+                      formation={awayTeam.formation}
+                    />
+
                     <div className="py-2">
                       {awayTeam.startXI.map((player, index) => (
                         <div key={index} className="">

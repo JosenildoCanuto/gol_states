@@ -3,6 +3,7 @@ import Saint from "../assets/saint.png";
 import Reims from "../assets/reims.png";
 import Leipzig from "../assets/rbLeipzig.png";
 import { Link } from "react-router-dom";
+import "../App.css";
 
 interface MatchesProps {
   id: number;
@@ -43,7 +44,7 @@ function Matche(props: MatchesProps) {
     <Link to={`/match/${id}`}>
       <div
         key={id}
-        className="flex justify-center items-center width h-44 p-5 bg-matches bg-opacity-20 rounded-3xl border border-slate-950 hover:border-blue-700"
+        className="flex justify-center items-center min-h-44 p-5 bg-matches bg-opacity-20 rounded-3xl border border-slate-950 hover:border-blue-700"
       >
         <div className="w-40 flex flex-col justify-center items-center gap-2">
           <img src={homeLogo} alt={teamHomeName} className="w-16 gap-4" />

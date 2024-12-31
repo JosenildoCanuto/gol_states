@@ -2,6 +2,7 @@ import Yellowcard from "../assets/yellowcardsvg.svg";
 import Redcard from "../assets/redcard.svg";
 import Var from "../assets/var.svg";
 
+
 interface EventsProps {
   assistsName?: string | null;
   detail?: string | null;
@@ -11,6 +12,7 @@ interface EventsProps {
   timeExtra?: number | null;
   logoTeam: string;
   nameTeam: string;
+  idTeam: number;
   type: string;
 }
 
@@ -24,6 +26,7 @@ function EventCard(props: EventsProps) {
     timeExtra,
     logoTeam,
     nameTeam,
+    idTeam
   } = props;
 
   let img;

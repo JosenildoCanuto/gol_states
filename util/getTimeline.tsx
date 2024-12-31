@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import "../src/App.css";
 import { useParams } from "react-router-dom";
 import { MatchResponse } from "../types";
 import Loading from "../src/components/Loading";
 import Timeline from "../src/components/Timeline";
 import Time from "../src/assets/time.svg";
+import React from "react";
 
 function MatchDetails() {
   const { matchId } = useParams();
   const [matchDetails, setMatchDetails] = useState<MatchResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  // const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     if (matchId) {
@@ -24,7 +24,7 @@ function MatchDetails() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
+        "x-rapidapi-key": apiKey,
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
@@ -62,11 +62,11 @@ function MatchDetails() {
   const timeExtra = matchDetails?.fixture.status.extra;
 
   return (
-    <div>
+    <div className="my-3">
       {isLoading ? (
         <Loading />
       ) : matchDetails ? (
-        <div className="center">
+        <div className="w-full max-w-lg mx-auto">
           <div className="w-full flex justify-center items-center">
             <img src={Time} alt="tempo" className="w-6 content-center" />
           </div>

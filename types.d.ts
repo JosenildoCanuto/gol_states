@@ -309,4 +309,10 @@ interface MatchResponse {
   players: PlayerPerformance[];
 }
 
-export { Standing, PlayerScores, ApiResponse, Matches, MatchResponse, Event };
+interface StatisticsProps {
+  type: string;
+  teamA: number | string;
+  teamB: number | string;
+}
+
+export { Standing, PlayerScores, ApiResponse, Matches, MatchResponse, Event, StatisticsProps };

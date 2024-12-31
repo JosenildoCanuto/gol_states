@@ -3,6 +3,7 @@ import EventSubst from "./EventSubst";
 import EventCard from "./EventCard";
 import { Event } from "../../types";
 
+
 function Timeline({
   event,
   index,

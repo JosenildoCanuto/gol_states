@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import StatisticsUai from "../src/components/Statistics";
+import StatisticsGame from "../src/components/Statistics";
+import Loading from "../src/components/Loading"
+import React from "react";
 
 function Statistics() {
   const [statistics, setStatistics] = useState([]);
   const { matchId } = useParams();
+  const apiKey = process.env.REACT_APP_API_KEY;
+
 
   useEffect(() => {
     getStatistics();
@@ -16,7 +20,7 @@ function Statistics() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
+        "x-rapidapi-key": apiKey,
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
@@ -37,40 +41,39 @@ function Statistics() {
     }
   }
 
-  const traducoes = {
-    "Shots on Goal": "Chutes no Gol",
-    "Shots off Goal": "Chutes para Fora",
-    "Total Shots": "Total de Chutes",
-    "Blocked Shots": "Chutes Bloqueados",
-    "Shots insidebox": "Chutes Dentro da Área",
-    "Shots outsidebox": "Chutes Fora da Área",
-    "Fouls": "Faltas",
-    "Corner Kicks": "Escanteios",
-    "Offsides": "Impedimentos",
-    "Ball Possession": "Posse de Bola",
-    "Yellow Cards": "Cartões Amarelos",
-    "Red Cards": "Cartões Vermelhos",
-    "Goalkeeper Saves": "Defesas do Goleiro",
-    "Total passes": "Total de Passes",
-    "Passes accurate": "Passes Precisos",
-    "Passes %": "Precisão de Passes",
-    "expected_goals": "Gols Esperados",
-    "goals_prevented": "Gols Evitados",
-  };
+  const combinedStats = [];
+  const teamAStats = statistics[0]?.statistics || [];
+  const teamBStats = statistics[1]?.statistics || [];
+
+  teamAStats.forEach((statA, index) => {
+    const statB = teamBStats[index];
+    combinedStats.push({
+      type: statA.type,
+      teamA: statA?.value || 0,
+      teamB: statB?.value || 0,
+    });
+  });
+
+  const orderedStats = combinedStats.sort((a,b) => {
+    if (a.type === "Ball Possession") return -1;
+    if (b.type === "Ball Possession") return 1;
+  })
 
   return (
     <div>
-      {statistics.map((teamStats, index) => (
-        <div key={index}>
-          <h2>{teamStats.team.name}</h2>
-          {teamStats.statistics.map((stat, idx) => (
-            <div key={idx}>
-              <StatisticsUai type="Posse de bola" value="61%" />
-              <StatisticsUai type="Posse de bola" value="39%" />
-            </div>
-          ))}
-        </div>
-      ))}
+      {orderedStats.length > 0 ? (
+        orderedStats.map((stats, index) => (
+          <div key={index}>
+            <StatisticsGame
+              type={stats.type}
+              teamA={stats.teamA}
+              teamB={stats.teamB}
+            />
+          </div>
+        ))
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }

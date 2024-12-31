@@ -16,9 +16,9 @@ function LeagueInfo() {
         </ul>
       </div>
       <Fixtures />
-      <div className="flex justify-center my-6 mx-24 bg-black bg-opacity-20 px-9 py-7 rounded-3xl">
+      <div className="flex justify-center w-objects bg-black bg-opacity-20 px-9 py-7 rounded-3xl">
         <Classification />
-        <div className="mx-14 border-l-2 border-blue-700"></div>
+        <div className="mx-7 border-l-2 border-blue-700"></div>
         <Carrosel />
       </div>
     </div>

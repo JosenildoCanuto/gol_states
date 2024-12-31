@@ -9,7 +9,7 @@ function Fixtures() {
   const { leagueId } = useParams();
   const [fixtures, setFixtures] = useState<Matches[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   const currentDate = new Date();
   const month: number = currentDate.getMonth();
@@ -33,7 +33,7 @@ function Fixtures() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
+        "x-rapidapi-key": apiKey,
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
@@ -51,11 +51,11 @@ function Fixtures() {
   }
 
   return (
-    <div className="margin">
+    <div className="w-objects">
       {isLoading ? (
         <Loading />
       ) : fixtures.length > 0 ? (
-        <div className="flex justify-center gap">
+        <div className="flex justify-between">
           {fixtures.slice(fixtures.length - 3, fixtures.length).map((fixture, index) => (
             <div key={index}>
               <Matche
