@@ -19,11 +19,6 @@ body {
   color: #1d5eee;
 }
 
-.w-objects {
-  max-width: 83rem;
-  margin: 2rem auto;
-}
-
 .width {
   width: 26rem;
 }
@@ -59,13 +54,66 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100v;
+  width: 100vw;
   height: 100vh;
 }
 
-.bg-matcheDetails{
+.bg-matcheDetails {
   background-image: url(../src/assets/bg-gameDetails1.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.w-objects {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.container-fixture {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.text-responsive{
+  font-size: 14px;
+}
+
+.text-invisible{
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .w-objects {
+    max-width: 45rem;
+    margin: 2rem auto;
+  }
+
+  .text-responsive{
+    font-size: 16px;
+  }
+
+  .text-invisible{
+    display: block;
+  }
+}
+
+/*  game details */
+
+
+
+@media (min-width: 1024px) {
+  .w-objects {
+    max-width: 83rem;
+    margin: 2rem auto;
+  }
+  .container-fixture {
+    display: flex;
+    flex-direction: row;
+  }
 }

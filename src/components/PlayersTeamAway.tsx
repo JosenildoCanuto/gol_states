@@ -28,7 +28,7 @@ function PlayerTeamAway(props: PlayerTeamsProps) {
         <div className="flex justify-center items-center">
           <p className="text-center w-5 font-semibold text-sm">{number}</p>
         </div>
-        <div className="w-64">
+        <div className="w-36 md:w-64">
           <p className="text-left">{playerName}</p>
         </div>
       </div>

@@ -31,7 +31,9 @@ function Home() {
           Para começar, <strong>selecione a liga:</strong>
         </p>
       </div>
+      <div className="ml-24">
         <Leagues />
+      </div>
     </div>
   );
 }

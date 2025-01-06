@@ -2,3 +2,22 @@
   color: #1d5eee;
   margin: 2rem;
 }
+
+.team-name {
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  max-width: 50px; 
+}
+
+.team-name:hover {
+  overflow: visible;
+  white-space: normal;
+}
+
+@media (min-width: 480px) {
+  .team-name {
+    max-width: 120px; /* Define uma largura máxima */
+    font-size: 0.8rem;
+  }
+}

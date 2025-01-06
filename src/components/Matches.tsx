@@ -2,6 +2,7 @@ import Liverpool from "../assets/liverpool_logo.png";
 import Saint from "../assets/saint.png";
 import Reims from "../assets/reims.png";
 import Leipzig from "../assets/rbLeipzig.png";
+import LogoPlacar from "./logoPlacar";
 import { Link } from "react-router-dom";
 import "../App.css";
 
@@ -44,21 +45,15 @@ function Matche(props: MatchesProps) {
     <Link to={`/match/${id}`}>
       <div
         key={id}
-        className="flex justify-center items-center min-h-44 p-5 bg-matches bg-opacity-20 rounded-3xl border border-slate-950 hover:border-blue-700"
+        className="flex justify-center items-center min-h-44 p-5 bg-matches bg-opacity-20 rounded-3xl border border-slate-950 hover:border-blue-700 lg:p-0"
       >
-        <div className="w-40 flex flex-col justify-center items-center gap-2">
-          <img src={homeLogo} alt={teamHomeName} className="w-16 gap-4" />
-          <p className="text-xs text-center font-medium">{teamHomeName}</p>
-        </div>
-        <div className="flex justify-center items-center">
+        <LogoPlacar logo={homeLogo} name={teamHomeName} />
+        <div className="w-full max-w-14 flex justify-center items-center">
           <p className="text-2xl font-semibold">
             {goalsHome} - {goalsAway}
           </p>
         </div>
-        <div className="w-40 flex flex-col justify-center items-center gap-2">
-          <img src={awayLogo} alt={teamAwayName} className="w-16 gap-4" />
-          <p className="text-xs text-center font-medium">{teamAwayName}</p>
-        </div>
+        <LogoPlacar logo={awayLogo} name={teamAwayName} />
       </div>
     </Link>
   );

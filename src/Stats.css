@@ -1,0 +1,19 @@
+.container-stats{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    color: var(--tw-text-opacity);
+    font-size: 0.75rem /* 12px */;
+    line-height: 1rem;
+    margin-left: 2.25rem;
+    margin-right: 2.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem
+}
+
+@media (min-width: 1024px) {
+    .container-stats {
+      width: 20rem;
+    }
+  }
+  

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import TopScores from "../pages/TopScores.tsx";
+import Stats from "../pages/Stats.tsx";
 import TopAssists from "../pages/TopAssists.tsx";
 import TopYellowCard from "../pages/TopYellowCard.tsx";
 import TopRedCard from "../pages/TopRedCard.tsx";
@@ -9,10 +9,10 @@ function Carrosel() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const sections = [
-    { content: <TopScores onLoad={() => setIsLoaded(true)} /> },
-    { content: <TopAssists onLoad={() => setIsLoaded(true)} /> },
-    { content: <TopYellowCard onLoad={() => setIsLoaded(true)} /> },
-    { content: <TopRedCard onLoad={() => setIsLoaded(true)} /> },
+    {title: "Gols", columns: "Gols"},
+    {title: "Assistências", columns: "Assistências"},
+    {title: "Cartões Amarelos", columns: "Amarelos"},
+    {title: "Cartões Vermelhos", columns: "Vermelhos"}
   ];
 
   function goToNextSlide() {
@@ -30,10 +30,12 @@ function Carrosel() {
 
   return (
     <div>
-      <div>{sections[currentIndex].content}</div>
+      <div>
+        <Stats title={sections[currentIndex].title} columns={sections[currentIndex].columns} onLoad={() => setIsLoaded(true)} />
+      </div>
       <div className="flex justify-center items-center mt-2 gap-4 border-none">
         <div>
-          <div className="flex items-center justify-center rounded-full text-xs gap-2">
+          <div className="flex items-center justify-center rounded-full text-xs gap-2 ">
             {sections.map((_, index) => (
               <button
                 key={index}

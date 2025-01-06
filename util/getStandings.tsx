@@ -4,12 +4,14 @@ import Team from "../src/components/Team";
 import "../src/App.css";
 import { useParams } from "react-router-dom";
 import Loading from "../src/components/Loading";
+import "../src/Classifications.css";
+import React from "react";
 
 function Standings() {
   const { leagueId } = useParams();
   const [standings, setStandings] = useState<Standing[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  // const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     if (leagueId) {
@@ -33,7 +35,7 @@ function Standings() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": apiKey,
+        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
@@ -41,6 +43,7 @@ function Standings() {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
+      console.log(result)
       setStandings(result.response[0]?.league?.standings[0] || []);
     } catch (error) {
       alert("Failed to fetch standings. Please try again later.");
@@ -57,11 +60,8 @@ function Standings() {
         ) : standings.length > 0 ? (
           <ul>
             {standings.map((team, index) => (
-              <div
-                className="grid grid-cols-2 max-w-96 items-center mx-9"
-                key={index}
-              >
-                <div className="text-white gap-2 flex items-center">
+              <div className="flex w-full max-w-4xl items-center" key={index}>
+                <div className="w-full max-w-lg text-white gap-2 flex items-center">
                   <div className="flex items-center">
                     <div className="flex w-5 justify-start">{team.rank}</div>
                     <Team
@@ -70,16 +70,16 @@ function Standings() {
                       id={team.team.id}
                     />
                   </div>
-                  <div className="font-semibold">{team.team.name}</div>
+                  <div className="team-name font-semibold ml-3">{team.team.name}</div>
                 </div>
-                <div className="grid grid-cols-7 gap-6 text-center text-base font-semibold text-white">
-                  <div>{team.points}</div>
-                  <div>{team.all.win}</div>
-                  <div>{team.all.draw}</div>
-                  <div>{team.all.lose}</div>
-                  <div>{team.all.goals.for}</div>
-                  <div>{team.all.goals.against}</div>
-                  <div>{team.goalsDiff}</div>
+                <div className="flex w-full max-w-80 text-center text-sm font-semibold text-white">
+                  <div className="w-full max-w-12 text-center">{team.points}</div>
+                  <div className="w-full max-w-12 text-center">{team.all.win}</div>
+                  <div className="w-full max-w-12 text-center">{team.all.draw}</div>
+                  <div className="w-full max-w-12 text-center">{team.all.lose}</div>
+                  <div className="w-full max-w-12 text-center text-invisible">{team.all.goals.for}</div>
+                  <div className="w-full max-w-12 text-center text-invisible">{team.all.goals.against}</div>
+                  <div className="w-full max-w-12 text-center">{team.goalsDiff}</div>
                 </div>
               </div>
             ))}

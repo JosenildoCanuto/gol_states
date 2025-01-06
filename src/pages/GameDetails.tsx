@@ -14,7 +14,7 @@ function GameDetails() {
   }
 
   const infoBtn = [
-    { name: "Linha do tempo", type: "timeline" },
+    { name: "Eventos", type: "timeline" },
     { name: "Escalação", type: "team" },
     { name: "Estatisticas", type: "stats" },
   ];
@@ -22,7 +22,7 @@ function GameDetails() {
   return (
     <div>
       <PlacarGame />
-      <div className="w-full flex justify-center bg-blue-600">
+      <div className="w-full flex justify-around md:justify-center bg-blue-600 text-sm">
         {infoBtn.map((info, index) => (
           <button
             className={`relative rounded-none bg-blue-600 hover:bg-blue-700 hover:border-none active:bg-blue-800 ${

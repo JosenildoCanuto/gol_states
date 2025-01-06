@@ -28,6 +28,19 @@
     background-color: #60a5fa;
   }
 
+  .container-teams-info{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+  }
+
   .conteiner-team{
     height: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-teams-info{
+      flex-direction: row;
+    }
   }

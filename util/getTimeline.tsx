@@ -4,13 +4,13 @@ import { MatchResponse } from "../types";
 import Loading from "../src/components/Loading";
 import Timeline from "../src/components/Timeline";
 import Time from "../src/assets/time.svg";
-import React from "react";
+import "../src/components/PlacarDetails.css";
 
 function MatchDetails() {
   const { matchId } = useParams();
   const [matchDetails, setMatchDetails] = useState<MatchResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  // const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     if (matchId) {
@@ -24,7 +24,7 @@ function MatchDetails() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": apiKey,
+        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
@@ -55,14 +55,17 @@ function MatchDetails() {
   }
 
   const dateISO: string | undefined = matchDetails?.fixture.date;
-  const dateObj = new Date(dateISO || '');
-  const time = dateObj.toLocaleTimeString("pt-BR", { hour: "2-digit", minute:"2-digit"})
+  const dateObj = new Date(dateISO || "");
+  const time = dateObj.toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   const timeElapsed = matchDetails?.fixture.status.elapsed;
   const timeExtra = matchDetails?.fixture.status.extra;
 
   return (
-    <div className="my-3">
+    <div className="container-timeline">
       {isLoading ? (
         <Loading />
       ) : matchDetails ? (
@@ -97,7 +100,9 @@ function MatchDetails() {
               </div>
               <hr className="border-px w-full bg-neutral-600" />
             </div>
-            <p className="text-center opacity-50">{timeExtra ? `${timeElapsed}+${timeExtra}'` : `${timeElapsed}'`}</p>
+            <p className="text-center opacity-50">
+              {timeExtra ? `${timeElapsed}+${timeExtra}'` : `${timeElapsed}'`}
+            </p>
           </div>
         </div>
       ) : (

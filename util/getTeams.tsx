@@ -13,7 +13,7 @@ function Teams() {
   const { matchId } = useParams();
   const [matchDetails, setMatchDetails] = useState<MatchResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  // const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     if (matchId) {
@@ -27,7 +27,7 @@ function Teams() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": apiKey,
+        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
@@ -70,20 +70,20 @@ function Teams() {
         <Loading />
       ) : matchDetails ? (
         <div>
-          <div className="flex">
+          <div className="container-teams-info">
             <div>
               {homeTeam && (
                 <div>
-                  <div className="bg-zinc-800 m-2">
+                  <div className="bg-zinc-800">
                     <HeaderScalition
                       id={matchDetails.teams.home.id}
                       img={matchDetails.teams.home.logo}
                       formation={homeTeam.formation}
                     />
-                    <div className="py-2">
+                    <div className="w-full h-full py-2">
                       {homeTeam.startXI.map((player, index) => (
                         <div key={index}>
-                          <PlayerTeamHome
+                          <PlayerTeamAway
                             playerName={player.player.name}
                             playerNumber={player.player.number}
                             playerPhoto={getPlayerPhoto(player.player.id)}
@@ -92,20 +92,40 @@ function Teams() {
                       ))}
                     </div>
                   </div>
+                  <div>
+                    <div className="bg-zinc-800">
+                      <div className="bg-text">
+                        <p className="w-full text-center font-semibold py-2">
+                          Substitutos
+                        </p>
+                      </div>
+                      <div className="py-2">
+                        {homeTeam.substitutes.map((player, index) => (
+                          <div key={index}>
+                            <PlayerTeamAway
+                              playerName={player.player.name}
+                              playerNumber={player.player.number}
+                              playerPhoto={getPlayerPhoto(player.player.id)}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
             <div>
               {awayTeam && (
-                <div className="h-full w-full">
-                  <div className="bg-zinc-800 m-2">
+                <div>
+                  <div className="bg-zinc-800">
                     <HeaderScalition
                       id={matchDetails.teams.away.id}
                       img={matchDetails.teams.away.logo}
                       formation={awayTeam.formation}
                     />
 
-                    <div className="py-2">
+                    <div className="w-full h-full py-2">
                       {awayTeam.startXI.map((player, index) => (
                         <div key={index} className="">
                           <PlayerTeamAway
@@ -115,56 +135,26 @@ function Teams() {
                           />
                         </div>
                       ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="flex">
-            <div className="flex">
-              {homeTeam && (
-                <div>
-                  <div className="bg-zinc-800 m-2">
-                    <div className="bg-text">
-                      <p className="text-center font-semibold py-2">
-                        Substitutos
-                      </p>
-                    </div>
-                    <div className="py-2">
-                      {homeTeam.substitutes.map((player, index) => (
-                        <div key={index}>
-                          <PlayerTeamHome
-                            playerName={player.player.name}
-                            playerNumber={player.player.number}
-                            playerPhoto={getPlayerPhoto(player.player.id)}
-                          />
+                      <div>
+                        <div className="bg-zinc-800">
+                          <div className="bg-text">
+                            <p className="w-full text-center font-semibold py-2">
+                              Substitutos
+                            </p>
+                          </div>
+                          <div className="py-2">
+                            {awayTeam.substitutes.map((player, index) => (
+                              <div key={index}>
+                                <PlayerTeamAway
+                                  playerName={player.player.name}
+                                  playerNumber={player.player.number}
+                                  playerPhoto={getPlayerPhoto(player.player.id)}
+                                />
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-            <div className="flex">
-              {awayTeam && (
-                <div>
-                  <div className="bg-zinc-800 m-2">
-                    <div className="bg-text">
-                      <p className="text-center font-semibold py-2">
-                        Substitutos
-                      </p>
-                    </div>
-                    <div className="py-2">
-                      {awayTeam.substitutes.map((player, index) => (
-                        <div key={index}>
-                          <PlayerTeamAway
-                            playerName={player.player.name}
-                            playerNumber={player.player.number}
-                            playerPhoto={getPlayerPhoto(player.player.id)}
-                          />
-                        </div>
-                      ))}
+                      </div>
                     </div>
                   </div>
                 </div>

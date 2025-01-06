@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Matches } from "../types";
-import Matche from "../src/components/Matches";
-import "../src/App.css";
 import { useParams } from "react-router-dom";
+import Matche from "../src/components/Matches";
 import Loading from "../src/components/Loading";
+import "../src/App.css";
 
 function Fixtures() {
   const { leagueId } = useParams();
   const [fixtures, setFixtures] = useState<Matches[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  // const apiKey = process.env.REACT_APP_API_KEY;
 
   const currentDate = new Date();
   const month: number = currentDate.getMonth();
@@ -33,7 +33,7 @@ function Fixtures() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": apiKey,
+        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
@@ -42,7 +42,7 @@ function Fixtures() {
       const response = await fetch(url, options);
       const result = await response.json();
       setFixtures(result.response);
-      console.log(result)
+      console.log(result);
     } catch (error) {
       console.error(error);
     } finally {
@@ -51,11 +51,11 @@ function Fixtures() {
   }
 
   return (
-    <div className="w-objects">
+    <div className="relative">
       {isLoading ? (
         <Loading />
       ) : fixtures.length > 0 ? (
-        <div className="flex justify-between">
+        <div className="container-fixture">
           {fixtures.slice(fixtures.length - 3, fixtures.length).map((fixture, index) => (
             <div key={index}>
               <Matche

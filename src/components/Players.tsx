@@ -1,4 +1,5 @@
 import Livepool from "../assets/liverpool_logo.png"
+import "./player.css"
 
 interface PlayerProps {
   id: number;
@@ -23,14 +24,14 @@ function Players(props: PlayerProps) {
   const finalImgae = isRectangular ? Livepool : teamLogo;
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="container-player">
       <p className="flex mr-1">{id + 1}</p>
       <img
         src={photo}
         alt={name}
         className="w-10 border-2 rounded-full border-blue-700 p-0.5 m-2"
       />
-      <div className="w-56">
+      <div className="player-name">
         <p className="font-semibold">{name}</p>
         <div className="flex items-center gap-1">
           <img
