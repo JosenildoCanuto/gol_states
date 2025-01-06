@@ -13,7 +13,7 @@ function Teams() {
   const { matchId } = useParams();
   const [matchDetails, setMatchDetails] = useState<MatchResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  // const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     if (matchId) {
@@ -27,7 +27,7 @@ function Teams() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
+        "x-rapidapi-key": apiKey,
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
