@@ -18,7 +18,7 @@ function PlacarGame() {
 
   async function getPlacar(id: string) {
     setIsLoading(true);
-    const url = `https://api-football-v1.p.rapidapi.com/v3/fixtures?id=${id}`;
+    const url = apiKey;
     const options = {
       method: "GET",
       headers: {

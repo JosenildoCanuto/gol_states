@@ -4,8 +4,6 @@ import "./team.css";
 import { useParams } from "react-router-dom";
 import { MatchResponse } from "../types";
 import Loading from "../src/components/Loading";
-import PlayerTeams from "../src/components/PlayersTeamHome";
-import PlayerTeamHome from "../src/components/PlayersTeamHome";
 import PlayerTeamAway from "../src/components/PlayersTeamAway";
 import HeaderScalition from "../src/components/HeaderEscalation";
 
@@ -135,25 +133,25 @@ function Teams() {
                           />
                         </div>
                       ))}
-                      <div>
-                        <div className="bg-zinc-800">
-                          <div className="bg-text">
-                            <p className="w-full text-center font-semibold py-2">
-                              Substitutos
-                            </p>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="bg-zinc-800">
+                      <div className="bg-text">
+                        <p className="w-full text-center font-semibold py-2">
+                          Substitutos
+                        </p>
+                      </div>
+                      <div className="py-2">
+                        {awayTeam.substitutes.map((player, index) => (
+                          <div key={index}>
+                            <PlayerTeamAway
+                              playerName={player.player.name}
+                              playerNumber={player.player.number}
+                              playerPhoto={getPlayerPhoto(player.player.id)}
+                            />
                           </div>
-                          <div className="py-2">
-                            {awayTeam.substitutes.map((player, index) => (
-                              <div key={index}>
-                                <PlayerTeamAway
-                                  playerName={player.player.name}
-                                  playerNumber={player.player.number}
-                                  playerPhoto={getPlayerPhoto(player.player.id)}
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </div>

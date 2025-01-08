@@ -1,46 +1,72 @@
 .bg-matches {
-    position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-matches::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../src/assets/bgMatches.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+  border-radius: 1.5rem;
+}
+
+.bg-text {
+  background-color: #3b82f6;
+}
+
+.bg-formation {
+  background-color: #60a5fa;
+}
+
+.container-teams-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.conteiner-team {
+  height: 5rem;
+}
+
+.page-rounds {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 92rem;
+  margin: 1.5rem auto;
+}
+
+.conteiner-rounds {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  margin: 0 1rem;
+  gap: 1rem;
+}
+
+@media (min-width: 425px) {
+  .conteiner-rounds {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
-  .bg-matches::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(../src/assets/bgMatches.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-    z-index: -1;
-    border-radius: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-teams-info {
+    flex-direction: row;
   }
 
-  .bg-text {
-    background-color: #3b82f6;
+  .conteiner-rounds {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
   }
-
-  .bg-formation {
-    background-color: #60a5fa;
-  }
-
-  .container-teams-info{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-
-  }
-
-  .conteiner-team{
-    height: 5rem;
-  }
-
-  @media (min-width: 768px) {
-    .container-teams-info{
-      flex-direction: row;
-    }
-  }
+}

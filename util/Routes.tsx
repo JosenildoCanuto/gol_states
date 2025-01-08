@@ -5,13 +5,15 @@ import LeagueInfo from "../src/pages/LeagueInfo";
 // import Teams from "./getTeams";
 // import Statistics from "./getStatistics";
 import GameDetails from "../src/pages/GameDetails";
+import GameRounds from "../src/pages/GamesRounds";
+// import Rounds from "./getRounds"
 
 
 function Rout() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<GameRounds />} />
         <Route path="/standings/:leagueId" element={<LeagueInfo />} />
         <Route path="/match/:matchId" element={<GameDetails  />} />
       </Routes>

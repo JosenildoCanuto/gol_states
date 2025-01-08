@@ -26,7 +26,7 @@ function StatisticsGame ({ type, teamA, teamB }: StatisticsProps) {
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto">
+    <div className="w-full max-w-md mx-auto">
       <div className="flex justify-between text-sm font-medium mb-2">
         <span>{teamA}</span>
         <span>{translations[type]}</span>

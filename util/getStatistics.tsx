@@ -3,12 +3,12 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StatisticsGame from "../src/components/Statistics";
 import Loading from "../src/components/Loading"
-import React from "react";
+import "../src/Statistics.css";
 
 function Statistics() {
   const [statistics, setStatistics] = useState([]);
   const { matchId } = useParams();
-  const apiKey = process.env.REACT_APP_API_KEY;
+  // const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     getStatistics();
@@ -59,7 +59,7 @@ function Statistics() {
   })
 
   return (
-    <div>
+    <div className="bg-zinc-800 container-statistics md:bg-black">
       {orderedStats.length > 0 ? (
         orderedStats.map((stats, index) => (
           <div key={index}>
