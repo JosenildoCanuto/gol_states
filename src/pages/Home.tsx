@@ -12,26 +12,16 @@ function Home() {
 
       <div className="mt-16 ml-24">
         <h1 className="text-4xl font-bold pb-6">{titleWeb}</h1>
-        <p className="pb-3">
-          <strong>GolStats</strong> permite que você acompanhe os resultados das
-          principais ligas de futebol ao longo de toda a temporada.
+        <p className="w-full max-w-3xl">
+          O <strong>GoalStates</strong> é um site desenvolvido para os apaixonados por futebol
+          que desejam acompanhar de perto as 5 principais ligas do mundo:
+          Premier League, La Liga, Serie A, Ligue 1 e Bundesliga.
         </p>
-        <ul className="list-disc pl-4 pb-4">
-          <li className="li-color">Selecione uma liga para acompanhar.</li>
-          <li className="li-color">
-            Selecione uma temporada para ver os resultados das partidas e a
-            classificação atualizada das equipes.
-          </li>
-          <li className="li-color">
-            A tabela final mostrará a pontuação total dos times ao término do
-            campeonato.
-          </li>
-        </ul>
-        <p>
+        <p className="mt-3">
           Para começar, <strong>selecione a liga:</strong>
         </p>
       </div>
-      <div className="ml-24">
+      <div className="mt-4 ml-24">
         <Leagues />
       </div>
     </div>

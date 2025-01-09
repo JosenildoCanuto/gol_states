@@ -3,6 +3,7 @@ import "./team.css";
 import { useParams } from "react-router-dom";
 import { MatchResponse } from "../types";
 import Matche from "../src/components/Matches";
+import Loading from "../src/components/Loading";
 
 interface MatchesListProps {
   selectedRound: number;
@@ -28,7 +29,7 @@ function Rounds({ selectedRound }: MatchesListProps) {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": apiKey,
+        // "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };
@@ -49,7 +50,7 @@ function Rounds({ selectedRound }: MatchesListProps) {
   return (
     <div>
       {isLoading ? (
-        <div>Carregando jogos...</div>
+        <Loading />
       ) : error ? (
         <div>{error}</div>
       ) : matches && matches.length > 0 ? (

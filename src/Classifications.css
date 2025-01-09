@@ -17,7 +17,7 @@
 
 @media (min-width: 480px) {
   .team-name {
-    max-width: 120px; /* Define uma largura máxima */
-    font-size: 0.8rem;
+    max-width: 120px;
+    font-size: 16px;
   }
 }

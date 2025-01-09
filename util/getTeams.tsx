@@ -4,6 +4,8 @@ import "./team.css";
 import { useParams } from "react-router-dom";
 import { MatchResponse } from "../types";
 import Loading from "../src/components/Loading";
+import PlayerTeams from "../src/components/PlayersTeamHome";
+import PlayerTeamHome from "../src/components/PlayersTeamHome";
 import PlayerTeamAway from "../src/components/PlayersTeamAway";
 import HeaderScalition from "../src/components/HeaderEscalation";
 

@@ -26,7 +26,7 @@ function Leagues() {
 
   return (
     <>
-      <div className="btns flex flex-row gap-2 py-6">
+      <div className="btns flex flex-row gap-2">
         {leagues.map((league) => (
           <button key={league.id} className="rounded-3xl flex justify-center items-center gap-3 hover:bg-blue-700 px-3" onClick={() => handleLeagueClick(league.id)}>
             <img src={league.flag} alt={`bandeira ${league.name}`} className="w-5" />

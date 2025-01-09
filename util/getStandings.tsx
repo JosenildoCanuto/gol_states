@@ -70,9 +70,9 @@ function Standings() {
                       id={team.team.id}
                     />
                   </div>
-                  <div className="team-name font-semibold ml-3">{team.team.name}</div>
+                  <div className="team-name font-semibold ml-3 md:text-lg">{team.team.name}</div>
                 </div>
-                <div className="flex w-full max-w-80 text-center text-sm font-semibold text-white">
+                <div className="flex w-full max-w-80 text-center text-sm md:text-lg font-semibold text-white">
                   <div className="w-full max-w-12 text-center">{team.points}</div>
                   <div className="w-full max-w-12 text-center">{team.all.win}</div>
                   <div className="w-full max-w-12 text-center">{team.all.draw}</div>

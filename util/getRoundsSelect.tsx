@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
+import Loading from "../src/components/Loading";
 import "./Rounds.css"
 
 interface RoundsSelectorProps {
     onSelectRound: (round: number) => void;
+    selectedRound: number | null;
   }
 
-function RoundsSelect({ onSelectRound }:RoundsSelectorProps) {
+function RoundsSelect({ onSelectRound, selectedRound }:RoundsSelectorProps) {
   const [rounds, setRounds] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const apiKey = process.env.REACT_APP_API_KEY;
-  
 
   useEffect(() => {
     getRoundsSelect();
@@ -20,8 +21,8 @@ function RoundsSelect({ onSelectRound }:RoundsSelectorProps) {
     setIsLoading(true);
     setError(null);
 
-
-    const url = apiKey;
+    const url =
+      "https://api-football-v1.p.rapidapi.com/v3/fixtures/rounds?league=39&season=2024";
     const options = {
       method: "GET",
       headers: {
@@ -33,7 +34,7 @@ function RoundsSelect({ onSelectRound }:RoundsSelectorProps) {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      setRounds(result.response); // Define as rodadas
+      setRounds(result.response);
       console.log(result);
     } catch (err) {
       setError("Erro ao carregar rodadas.");
@@ -46,7 +47,7 @@ function RoundsSelect({ onSelectRound }:RoundsSelectorProps) {
   return (
     <div>
       {isLoading ? (
-        <p>Carregando rodadas...</p>
+        <Loading />
       ) : error ? (
         <p>{error}</p>
       ) : rounds.length > 0 ? (
@@ -55,7 +56,7 @@ function RoundsSelect({ onSelectRound }:RoundsSelectorProps) {
             <button
               key={index}
               onClick={() => onSelectRound(index + 1)}
-              className="rounds-btn"
+              className={`rounds-btn ${selectedRound === index + 1 ? "selected": ''}`}
             >
               {index + 1}
             </button>

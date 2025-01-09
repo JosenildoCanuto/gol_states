@@ -12,7 +12,7 @@ function GameRounds() {
         <li className="li-color font-bold text-2xl ml-6">{selectedRound ? `Rodada ${selectedRound}` : "Rodadas"}</li>
       </ul>
       <CurrentRound onSetCurrentRound={setSelectedRound} />
-      <RoundsSelector onSelectRound={setSelectedRound} />
+      <RoundsSelector selectedRound={selectedRound} onSelectRound={setSelectedRound} />
       {selectedRound && <Rounds selectedRound={selectedRound} />}
     </div>
   );

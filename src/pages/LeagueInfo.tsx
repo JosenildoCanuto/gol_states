@@ -11,9 +11,9 @@ function LeagueInfo() {
         <h1 className="text-4xl mt-8">
           <strong>Goal</strong>Verse
         </h1>
-        <div>
+        <div className="mt-4">
           <Leagues />
-          <ul className="list-disc ml-6">
+          <ul className="list-disc ml-6 mt-4">
             <li className="li-color font-bold text-2xl">Últimos jogos</li>
           </ul>
         </div>

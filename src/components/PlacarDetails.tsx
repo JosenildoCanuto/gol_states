@@ -70,7 +70,7 @@ function PlacarDetails(props: placarProps) {
           <img src={logoTeamHome} alt={`logo ${{nameTeamAway}}`} className="logo-team" />
         </div>
 
-        <div className="w-32 flex justify-center items-center">
+        <div className="w-32 flex justify-center items-center md:gap-4">
           <h1 className="w-6 h-12 text-center font-bold text-4xl md:text-5xl">
             {goalsHome}
           </h1>
