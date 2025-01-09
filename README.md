@@ -13,7 +13,8 @@ O **GoalStates** é um site desenvolvido para os apaixonados por futebol que des
 
 ## Demonstração
 
-![Uploading demostracao.gif…]()
+![demostracao](https://github.com/user-attachments/assets/2a901117-b3ed-48d2-86cb-eb95ff3ec006)
+
 
 ## Rodando localmente
 
