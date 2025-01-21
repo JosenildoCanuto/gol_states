@@ -9,7 +9,7 @@ function GameRounds() {
   const [selectedRound, setSelectedRound] = useState<number | null>(null);
 
   return (
-    <div className="page-rounds">
+    <div className="page-rounds text-white">
       <ul className="list-disc pl-3">
         <li className="li-color font-bold text-2xl ml-6">
           {selectedRound ? `Rodada ${selectedRound}` : "Rodadas"}

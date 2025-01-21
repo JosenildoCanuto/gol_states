@@ -9,9 +9,9 @@ function LeagueInfo() {
   const { leagueId } = useParams();
 
   return (
-    <div className="bgInfoLeague w-objects">
-      <div className="">
-        <h1 className="text-4xl mt-8">
+    <div className="bgInfoLeague w-objects text-white">
+      <div>
+        <h1 className="text-4xl pt-8">
           <strong>Goal</strong>Verse
         </h1>
         <div className="mt-4">

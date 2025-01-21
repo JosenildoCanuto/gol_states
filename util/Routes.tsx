@@ -3,7 +3,6 @@ import Home from "../src/pages/Home";
 import LeagueInfo from "../src/pages/LeagueInfo";
 import GameDetails from "../src/pages/GameDetails";
 import GameRounds from "../src/pages/GamesRounds";
-import React from "react";
 
 function Rout() {
   return (

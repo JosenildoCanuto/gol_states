@@ -4,6 +4,7 @@ body {
 
 .background-img {
   background-image: url(../src/assets/background-image.png);
+  background-color: #242424;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -60,6 +61,7 @@ body {
 
 .bg-matcheDetails {
   background-image: url(../src/assets/bg-gameDetails1.png);
+  background-color: #242424;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

@@ -7,10 +7,10 @@ function Home() {
   return (
     <div className="background-img">
       <div className="py-2.5 pl-24 bg-blue-700">
-        <h1 className="text-4xl font-bold">{titleWeb}</h1>
+        <h1 className="text-4xl font-bold text-white">{titleWeb}</h1>
       </div>
 
-      <div className="mt-16 ml-24">
+      <div className="mt-16 md:ml-24 mx-6 text-white">
         <h1 className="text-4xl font-bold pb-6">{titleWeb}</h1>
         <p className="w-full max-w-3xl">
           O <strong>GoalStates</strong> é um site desenvolvido para os apaixonados por futebol
@@ -21,7 +21,7 @@ function Home() {
           Para começar, <strong>selecione a liga:</strong>
         </p>
       </div>
-      <div className="mt-4 ml-24">
+      <div className="mt-4 md:ml-24 mx-6">
         <Leagues />
       </div>
     </div>

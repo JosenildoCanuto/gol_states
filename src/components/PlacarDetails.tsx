@@ -48,7 +48,7 @@ function PlacarDetails(props: placarProps) {
       <div className="w-full flex justify-center">
         {currentLeague ? (
           <button
-            className="rounded-3xl px-5 flex justify-center items-center gap-3 hover:bg-blue-700"
+            className="rounded-3xl px-5 flex justify-center items-center gap-3 hover:bg-blue-700 bg-zinc-900"
             onClick={() => handleLeagueClick(currentLeague.id)}
           >
             <img

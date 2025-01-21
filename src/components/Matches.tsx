@@ -45,7 +45,7 @@ function Matche(props: MatchesProps) {
     <Link to={`/match/${id}`}>
       <div
         key={id}
-        className="flex justify-center items-center min-h-44 p-5 bg-matches bg-opacity-20 rounded-3xl border border-slate-950 hover:border-blue-700 lg:p-0"
+        className="flex justify-center items-center min-h-44 p-5 bg-matches bg-opacity-20 rounded-3xl border border-slate-950 hover:border-blue-700 lg:p-0 text-white"
       >
         <LogoPlacar logo={homeLogo} name={teamHomeName} />
         <div className="w-full max-w-14 flex justify-center items-center">

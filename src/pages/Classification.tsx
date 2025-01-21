@@ -4,7 +4,7 @@ import "../App.css";
 function Classification() {
   return (
     <>
-      <div className="w-full">
+      <div className="w-full text-white">
         <div>
           <div>
             <ul className="list-disc">

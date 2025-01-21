@@ -4,7 +4,6 @@ import Teams from "../../util/getTeams";
 import Statistics from "../../util/getStatistics";
 import PlacarGame from "../../util/getScoreboard";
 import { useState } from "react";
-import { index } from "mathjs";
 
 function GameDetails() {
   const [selectedButton, setSelectedButton] = useState("timeline");
@@ -20,7 +19,7 @@ function GameDetails() {
   ];
 
   return (
-    <div>
+    <div className="text-white">
       <PlacarGame />
       <div className="w-full flex justify-around md:justify-center bg-blue-600 text-sm">
         {infoBtn.map((info, index) => (
