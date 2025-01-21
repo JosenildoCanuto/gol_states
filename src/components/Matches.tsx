@@ -2,7 +2,7 @@ import Liverpool from "../assets/liverpool_logo.png";
 import Saint from "../assets/saint.png";
 import Reims from "../assets/reims.png";
 import Leipzig from "../assets/rbLeipzig.png";
-import LogoPlacar from "./logoPlacar";
+import LogoPlacar from "./LogoPlacar";
 import { Link } from "react-router-dom";
 import "../App.css";
 
