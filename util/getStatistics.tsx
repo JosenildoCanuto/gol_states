@@ -8,7 +8,7 @@ import "../src/Statistics.css";
 function Statistics() {
   const [statistics, setStatistics] = useState([]);
   const { matchId } = useParams();
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     getStatistics();

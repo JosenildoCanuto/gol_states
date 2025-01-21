@@ -14,7 +14,7 @@ function RedCard({ onLoad }: ScoresProps) {
   const { leagueId } = useParams();
   const [statistics, setStatistics] = useState<PlayerScores[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     if (leagueId) {

@@ -12,7 +12,7 @@ function RoundsSelect({ onSelectRound, selectedRound }:RoundsSelectorProps) {
   const [rounds, setRounds] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     getRoundsSelect();

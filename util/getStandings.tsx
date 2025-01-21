@@ -10,7 +10,7 @@ function Standings() {
   const { leagueId } = useParams();
   const [standings, setStandings] = useState<Standing[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     if (leagueId) {

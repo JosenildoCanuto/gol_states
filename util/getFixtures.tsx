@@ -10,7 +10,7 @@ function Fixtures() {
   const { leagueId } = useParams();
   const [fixtures, setFixtures] = useState<Matches[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const currentDate = new Date();
   const month: number = currentDate.getMonth();

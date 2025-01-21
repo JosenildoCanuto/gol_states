@@ -7,8 +7,7 @@ interface CurrentRoundProps {
 
 function CurrentRound({ onSetCurrentRound, leagueId  }: CurrentRoundProps) {
   const [round, setRound] = useState<string>("");
-  const apiKey = process.env.REACT_APP_API_KEY;
-
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     if(leagueId){

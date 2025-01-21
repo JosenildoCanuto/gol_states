@@ -15,8 +15,7 @@ function Rounds({ selectedRound }: MatchesListProps) {
   const [matches, setMatches] = useState<MatchResponse[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const apiKey = process.env.REACT_APP_API_KEY;
-
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     if (selectedRound && leagueId) {
