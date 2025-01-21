@@ -1,5 +1,5 @@
 import Subst from "../assets/substituicao.svg";
-import "./event.css";
+import "./Event.css";
 
 interface EventsProps {
   assistsName?: string | null;
