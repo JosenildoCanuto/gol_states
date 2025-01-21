@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PlacarDetails from "../src/components/PlacarDetails";
 import Loading from "../src/components/Loading";
+// import React from "react";
 
 function PlacarGame() {
   const [placar, setPlacar] = useState([]);

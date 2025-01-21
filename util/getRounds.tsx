@@ -7,9 +7,11 @@ import Loading from "../src/components/Loading";
 
 interface MatchesListProps {
   selectedRound: number;
+  leagueId?: string;
 }
 
 function Rounds({ selectedRound }: MatchesListProps) {
+  const { leagueId } = useParams();
   const [matches, setMatches] = useState<MatchResponse[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -17,19 +19,19 @@ function Rounds({ selectedRound }: MatchesListProps) {
 
 
   useEffect(() => {
-    if (selectedRound) {
-      getTeams(selectedRound);
+    if (selectedRound && leagueId) {
+      getTeams(selectedRound, leagueId);
     }
-  }, [selectedRound]);
+  }, [selectedRound, leagueId]);
 
-  async function getTeams(round: number) {
+  async function getTeams(round: number, leagueId: string) {
     setIsLoading(true);
     setError(null);
-    const url = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2024&round=Regular%20Season%20-%20${round}`;
+    const url = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${leagueId}&season=2024&round=Regular%20Season%20-%20${round}`;
     const options = {
       method: "GET",
       headers: {
-        // "x-rapidapi-key": "78d22a98a4msh9915b0635b96405p101a32jsn799d54708d73",
+        "x-rapidapi-key": apiKey,
         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       },
     };

@@ -1,5 +1,5 @@
 import Subst from "../assets/substituicao.svg";
-import "./event.css"
+import "./event.css";
 
 interface EventsProps {
   assistsName?: string | null;
@@ -11,6 +11,7 @@ interface EventsProps {
   timeExtra?: number | null;
   logoTeam: string;
   nameTeam: string;
+  idTeam: number;
   type: string;
 }
 
@@ -51,7 +52,7 @@ function EventSubst(props: EventsProps) {
           </div>
         </div>
         <div className="flex justify-center items-center w-16 h-16 rounded-full border-2 border-blue-700 p-px">
-          <img src={assistFoto || ''} alt="" className="w-14 rounded-full" />
+          <img src={assistFoto || ""} alt="" className="w-14 rounded-full" />
         </div>
       </div>
       <div className="flex items-center justify-between gap-4 py-2">
@@ -64,7 +65,11 @@ function EventSubst(props: EventsProps) {
           </div>
         </div>
         <div className="flex justify-center items-center w-16 h-16 rounded-full border-2 border-blue-700 p-px">
-          <img src={playerFoto || ''} alt={detail || ''} className="w-14 rounded-full" />
+          <img
+            src={playerFoto || ""}
+            alt={detail || ""}
+            className="w-14 rounded-full"
+          />
         </div>
       </div>
     </div>

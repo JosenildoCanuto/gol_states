@@ -1,3 +1,4 @@
+import { Link, useParams } from "react-router-dom";
 import Carrosel from "../components/Carrosel";
 import Leagues from "../components/Leagues";
 import Classification from "./Classification";
@@ -5,6 +6,8 @@ import Fixtures from "../../util/getFixtures";
 import "./LeagueInfo.css";
 
 function LeagueInfo() {
+  const { leagueId } = useParams();
+
   return (
     <div className="bgInfoLeague w-objects">
       <div className="">
@@ -13,8 +16,9 @@ function LeagueInfo() {
         </h1>
         <div className="mt-4">
           <Leagues />
-          <ul className="list-disc ml-6 mt-4">
+          <ul className="flex justify-between items-center list-disc ml-6 mt-4">
             <li className="li-color font-bold text-2xl">Últimos jogos</li>
+            <Link to={`/game-rounds/${leagueId}`}>Ver mais</Link>
           </ul>
         </div>
         <Fixtures />

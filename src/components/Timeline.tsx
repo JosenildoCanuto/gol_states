@@ -3,7 +3,6 @@ import EventSubst from "./EventSubst";
 import EventCard from "./EventCard";
 import { Event } from "../../types";
 
-
 function Timeline({
   event,
   index,
@@ -23,6 +22,7 @@ function Timeline({
           playerFoto={getPlayerPhoto(event.player.id)}
           nameTeam={event.team.name}
           logoTeam={event.team.logo}
+          idTeam={event.team.id}
           timeElapsed={event.time.elapsed}
           timeExtra={event.time.extra}
           type={event.type}
@@ -39,6 +39,7 @@ function Timeline({
           assistFoto={getPlayerPhoto(event.assist?.id)}
           nameTeam={event.team.name}
           logoTeam={event.team.logo}
+          idTeam={event.team.id}
           timeElapsed={event.time.elapsed}
           timeExtra={event.time.extra}
           type={event.type}
@@ -54,6 +55,7 @@ function Timeline({
           playerFoto={getPlayerPhoto(event.player.id)}
           nameTeam={event.team.name}
           logoTeam={event.team.logo}
+          idTeam={event.team.id}
           timeElapsed={event.time.elapsed}
           timeExtra={event.time.extra}
           type={event.type}
@@ -70,6 +72,7 @@ function Timeline({
             playerFoto={getPlayerPhoto(event.player.id)}
             nameTeam={event.team.name}
             logoTeam={event.team.logo}
+            idTeam={event.team.id}
             timeElapsed={event.time.elapsed}
             timeExtra={event.time.extra}
             type={event.type}

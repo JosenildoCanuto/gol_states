@@ -1,4 +1,7 @@
-import Livepool from "../assets/liverpool_logo.png"
+import Liverpool from "../assets/liverpool_logo.png"
+import Saint from "../assets/saint.png";
+import Reims from "../assets/reims.png";
+import Leipzig from "../assets/rbLeipzig.png";
 import "./player.css"
 
 interface PlayerProps {
@@ -14,14 +17,12 @@ interface PlayerProps {
   red?: number;
 };
 
-const teamWithRectangularImages = [40];
+const customImages: Record<number, string> = { 40: Liverpool, 93: Reims, 173: Leipzig, 1063: Saint };
 
 function Players(props: PlayerProps) {
   const { id, name, photo, teamLogo, teamName, teamId, goals, assists, yellow, red } = props;
 
-  const isRectangular = teamWithRectangularImages.includes(teamId);
-
-  const finalImgae = isRectangular ? Livepool : teamLogo;
+  const finalImgae = customImages[teamId] || teamLogo;
 
   return (
     <div className="container-player">
@@ -37,7 +38,7 @@ function Players(props: PlayerProps) {
           <img
             src={finalImgae}
             alt={teamName}
-            className="w-6 border-2 rounded-full border-blue-700 p-0.5"
+            className="w-6 h-6 border-2 rounded-full border-blue-700 p-0.5"
           />
           <p className="text-xs">{teamName}</p>
         </div>

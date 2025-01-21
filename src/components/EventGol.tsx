@@ -10,6 +10,7 @@ interface EventsProps {
   timeExtra?: number | null;
   logoTeam: string;
   nameTeam: string;
+  idTeam: number;
   type: string;
 }
 
@@ -64,7 +65,7 @@ function EventGol(props: EventsProps) {
           </div>
         </div>
         <div className="flex justify-center items-center w-16 h-16 rounded-full border-2 border-blue-700 p-px">
-          <img src={playerFoto} alt="" className="w-14 rounded-full" />
+          <img src={playerFoto} alt={`Jogador ${playerName}`} className="w-14 rounded-full" />
         </div>
       </div>
     </div>

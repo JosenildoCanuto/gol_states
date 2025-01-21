@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import Stats from "../pages/Stats.tsx";
-import TopAssists from "../pages/TopAssists.tsx";
-import TopYellowCard from "../pages/TopYellowCard.tsx";
-import TopRedCard from "../pages/TopRedCard.tsx";
 
 function Carrosel() {
   const [currentIndex, setCurrentIndex] = useState(0);

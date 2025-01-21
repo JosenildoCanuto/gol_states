@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Matche from "../src/components/Matches";
 import Loading from "../src/components/Loading";
 import "../src/App.css";
+// import React from "react";
 
 function Fixtures() {
   const { leagueId } = useParams();

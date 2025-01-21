@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Loading from "../src/components/Loading";
 import "./Rounds.css"
+// import React from "react";
 
 interface RoundsSelectorProps {
     onSelectRound: (round: number) => void;

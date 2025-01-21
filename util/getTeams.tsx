@@ -1,12 +1,10 @@
-import React from "react";
+// import React from "react";
 import { useEffect, useState } from "react";
 import "./team.css";
 import { useParams } from "react-router-dom";
 import { MatchResponse } from "../types";
 import Loading from "../src/components/Loading";
-import PlayerTeams from "../src/components/PlayersTeamHome";
-import PlayerTeamHome from "../src/components/PlayersTeamHome";
-import PlayerTeamAway from "../src/components/PlayersTeamAway";
+import PlayersTeam from "../src/components/PlayersTeam";
 import HeaderScalition from "../src/components/HeaderEscalation";
 
 function Teams() {
@@ -35,7 +33,6 @@ function Teams() {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log(result);
       setMatchDetails(result.response[0]);
     } catch (error) {
       console.error(error);
@@ -83,7 +80,7 @@ function Teams() {
                     <div className="w-full h-full py-2">
                       {homeTeam.startXI.map((player, index) => (
                         <div key={index}>
-                          <PlayerTeamAway
+                          <PlayersTeam
                             playerName={player.player.name}
                             playerNumber={player.player.number}
                             playerPhoto={getPlayerPhoto(player.player.id)}
@@ -102,7 +99,7 @@ function Teams() {
                       <div className="py-2">
                         {homeTeam.substitutes.map((player, index) => (
                           <div key={index}>
-                            <PlayerTeamAway
+                            <PlayersTeam
                               playerName={player.player.name}
                               playerNumber={player.player.number}
                               playerPhoto={getPlayerPhoto(player.player.id)}
@@ -128,7 +125,7 @@ function Teams() {
                     <div className="w-full h-full py-2">
                       {awayTeam.startXI.map((player, index) => (
                         <div key={index} className="">
-                          <PlayerTeamAway
+                          <PlayersTeam
                             playerName={player.player.name}
                             playerNumber={player.player.number}
                             playerPhoto={getPlayerPhoto(player.player.id)}
@@ -147,7 +144,7 @@ function Teams() {
                       <div className="py-2">
                         {awayTeam.substitutes.map((player, index) => (
                           <div key={index}>
-                            <PlayerTeamAway
+                            <PlayersTeam
                               playerName={player.player.name}
                               playerNumber={player.player.number}
                               playerPhoto={getPlayerPhoto(player.player.id)}

@@ -5,6 +5,7 @@ import Loading from "../src/components/Loading";
 import Timeline from "../src/components/Timeline";
 import Time from "../src/assets/time.svg";
 import "../src/components/PlacarDetails.css";
+// import React from "react";
 
 function MatchDetails() {
   const { matchId } = useParams();
@@ -32,7 +33,6 @@ function MatchDetails() {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log(result);
       setMatchDetails(result.response[0]);
     } catch (error) {
       console.error(error);

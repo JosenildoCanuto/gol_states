@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { useEffect, useState } from "react";
 import "../src/Statistics.css";
 import Players from "../src/components/Players";

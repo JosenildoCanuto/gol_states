@@ -5,7 +5,6 @@ import "../src/App.css";
 import { useParams } from "react-router-dom";
 import Loading from "../src/components/Loading";
 import "../src/Classifications.css";
-import React from "react";
 
 function Standings() {
   const { leagueId } = useParams();

@@ -4,7 +4,7 @@ interface PlayerTeamsProps {
   playerNumber: number;
 }
 
-function PlayerTeamAway(props: PlayerTeamsProps) {
+function PlayersTeam(props: PlayerTeamsProps) {
   const { playerName, playerNumber, playerPhoto } = props;
 
   let number;
@@ -36,4 +36,4 @@ function PlayerTeamAway(props: PlayerTeamsProps) {
   );
 }
 
-export default PlayerTeamAway;
+export default PlayersTeam;

@@ -2,7 +2,6 @@ import Yellowcard from "../assets/yellowcardsvg.svg";
 import Redcard from "../assets/redcard.svg";
 import Var from "../assets/var.svg";
 
-
 interface EventsProps {
   assistsName?: string | null;
   detail?: string | null;
@@ -26,7 +25,6 @@ function EventCard(props: EventsProps) {
     timeExtra,
     logoTeam,
     nameTeam,
-    idTeam
   } = props;
 
   let img;
@@ -35,7 +33,8 @@ function EventCard(props: EventsProps) {
   switch (type) {
     case "Card":
       img = detail === "Yellow Card" ? Yellowcard : Redcard;
-      detailInfo = detail === "Yellow Card" ? "Cartão amarelo": "Cartão vermelho"
+      detailInfo =
+        detail === "Yellow Card" ? "Cartão amarelo" : "Cartão vermelho";
       break;
     case "Var":
       img = Var;
@@ -44,14 +43,14 @@ function EventCard(props: EventsProps) {
           ? "Gol anulado"
           : detail === "Penalty cancelled"
           ? "Pênalti anulado"
-          : detail === "Goal Disallowed - offside" ? "Gol anulado - impedimento"
-          :detail;
+          : detail === "Goal Disallowed - offside"
+          ? "Gol anulado - impedimento"
+          : detail;
       break;
     default:
       img = undefined;
       detailInfo = detail;
   }
-
 
   return (
     <div className="w-full h-auto my-5 bg-zinc-800 rounded-lg border-stone-700 border-2">
@@ -60,7 +59,9 @@ function EventCard(props: EventsProps) {
           <img src={img} alt="Yellowcard" className="w-5 h-5" />
           <h1 className="text-base text-left font-bold ">{detailInfo}</h1>
         </div>
-        <div className="p-2">{timeExtra ? `${timeElapsed}+${timeExtra}'` : `${timeElapsed}'`}</div>
+        <div className="p-2">
+          {timeExtra ? `${timeElapsed}+${timeExtra}'` : `${timeElapsed}'`}
+        </div>
       </div>
       <div className="px-6 flex justify-center mt-2">
         <div className="w-full bg-zinc-900 h-px rounded-full"></div>
@@ -75,8 +76,8 @@ function EventCard(props: EventsProps) {
         </div>
         <div className="flex justify-center items-center w-16 h-16 rounded-full border-2 border-blue-700 p-px">
           <img
-            src={playerFoto || ''}
-            alt={playerName || ''}
+            src={playerFoto || ""}
+            alt={playerName || ""}
             className="w-14 rounded-full"
           />
         </div>
