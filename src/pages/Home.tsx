@@ -6,7 +6,7 @@ function Home() {
 
   return (
     <div className="background-img">
-      <div className="py-2.5 pl-24 bg-blue-700">
+      <div className="py-2.5 md:pl-24 pl-6 bg-blue-700">
         <h1 className="text-4xl font-bold text-white">{titleWeb}</h1>
       </div>
 
