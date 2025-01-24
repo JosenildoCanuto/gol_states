@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Standing } from "../types";
-import Team from "../src/components/Team";
-import "../src/App.css";
 import { useParams } from "react-router-dom";
+import Team from "../src/components/Team";
 import Loading from "../src/components/Loading";
+import Escudo from "../src/assets/escudo.png"
+import "../src/App.css";
 import "../src/Classifications.css";
 
 function Standings() {
