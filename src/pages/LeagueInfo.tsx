@@ -21,9 +21,6 @@ function LeagueInfo() {
           <ul className="flex justify-between items-center list-disc ml-6 mt-4">
             <li className="li-color font-bold text-2xl">Últimos jogos</li>
             <div className="flex gap-6 items-center">
-              <Link to={`/game-rounds/${leagueId}?season=${selectedSeason}`}>
-                Ver mais
-              </Link>
               <select
                 value={selectedSeason}
                 onChange={(e) => setSelectedSeason(e.target.value)}
@@ -35,6 +32,11 @@ function LeagueInfo() {
               </select>
             </div>
           </ul>
+        </div>
+        <div className="flex justify-end pt-4">
+          <Link to={`/game-rounds/${leagueId}?season=${selectedSeason}`}>
+            Ver mais
+          </Link>
         </div>
         <Fixtures selectedSeason={selectedSeason} />
         <div className="bg-opacity-20 container-classification bg-zinc-900">
