@@ -29,9 +29,9 @@ function LeagueInfo() {
                 onChange={(e) => setSelectedSeason(e.target.value)}
                 className="p-2.5 rounded-xl border border-gray-300 bg-white text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
               >
-                <option value="2025/2026">Temporada 25/26</option>
-                <option value="2024/2025">Temporada 24/25</option>
-                <option value="2023/2024">Temporada 23/24</option>
+                <option value="2024/2025">Temp. 24/25</option>
+                <option value="2025/2026">Temp. 25/26</option>
+                <option value="2023/2024">Temp. 23/24</option>
               </select>
             </div>
           </ul>
