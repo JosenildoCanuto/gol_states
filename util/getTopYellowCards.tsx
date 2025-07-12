@@ -5,13 +5,9 @@ import Players from "../src/components/Players";
 import { PlayerScores, ApiResponse } from "../types";
 import Loading from "../src/components/Loading";
 import { useParams } from "react-router-dom";
-import React from "react";
+import { StatisticsProps } from "../src/types/types";
 
-interface ScoresProps {
-  onLoad?: () => void;
-}
-
-function YellowcCard({ onLoad }: ScoresProps) {
+function YellowcCard({ onLoad, selectedSeason }: StatisticsProps) {
   const { leagueId } = useParams();
   const [statistics, setStatistics] = useState<PlayerScores[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,21 +15,12 @@ function YellowcCard({ onLoad }: ScoresProps) {
 
   useEffect(() => {
     if (leagueId) {
-      getYellowCard(leagueId);
+      const year = parseInt(selectedSeason.split("/")[0]);
+      getYellowCard(leagueId, year);
     }
-  }, [leagueId]);
+  }, [leagueId, selectedSeason]);
 
-  const currentDate = new Date();
-  const month: number = currentDate.getMonth();
-  let year: number;
-
-  if (month < 6) {
-    year = currentDate.getFullYear() - 1;
-  } else {
-    year = currentDate.getFullYear();
-  }
-
-  async function getYellowCard(leagueId: string) {
+  async function getYellowCard(leagueId: string, year: number) {
     setIsLoading(true);
     const url = `https://api-football-v1.p.rapidapi.com/v3/players/topyellowcards?league=${leagueId}&season=${year}`;
     const options = {
@@ -92,9 +79,11 @@ function YellowcCard({ onLoad }: ScoresProps) {
           ))}
         </div>
       ) : (
-        <p className="text-white w-full h-full flex justify-center items-center">
-          No data available.
-        </p>
+        <div className="container_data">
+          <p className="text-white w-full h-full flex justify-center items-center">
+            Sem dados
+          </p>
+        </div>
       )}
     </div>
   );

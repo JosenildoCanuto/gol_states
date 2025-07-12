@@ -4,26 +4,27 @@ import Assists from "../../util/getTopAssists";
 import YellowCards from "../../util/getTopYellowCards";
 import RedCards from "../../util/getTopRedCards";
 
-interface StatssProps {
+type StatssProps = {
   title: string;
   columns: string;
-  onLoad?: () => void; // Recebe a função onLoad como prop
+  onLoad?: () => void;
+  selectedSeason: string;
 }
 
-function Stats({ title, columns, onLoad }: StatssProps) {
+function Stats({ title, columns, onLoad, selectedSeason }: StatssProps) {
   const renderContent = () => {
     switch (columns) {
       case "Gols":
-        return <Scores onLoad={onLoad} />;
+        return <Scores selectedSeason={selectedSeason} onLoad={onLoad} />;
         break;
       case "Assistências":
-        return <Assists onLoad={onLoad} />;
+        return <Assists selectedSeason={selectedSeason} onLoad={onLoad} />;
         break;
       case "Amarelos":
-        return <YellowCards onLoad={onLoad} />;
+        return <YellowCards selectedSeason={selectedSeason} onLoad={onLoad} />;
         break;
       case "Vermelhos":
-        return <RedCards onLoad={onLoad} />;
+        return <RedCards selectedSeason={selectedSeason} onLoad={onLoad} />;
         break;
 
       default:<div>Estatística não disponível</div>

@@ -106,9 +106,11 @@ function MatchDetails() {
           </div>
         </div>
       ) : (
-        <p className="text-white w-full h-full flex justify-center items-center">
-          No data available.
-        </p>
+        <div className="container_data">
+          <p className="text-white w-full h-full flex justify-center items-center">
+            Sem dados
+          </p>
+        </div>
       )}
     </div>
   );

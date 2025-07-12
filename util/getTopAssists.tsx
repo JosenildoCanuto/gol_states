@@ -4,12 +4,9 @@ import Players from "../src/components/Players";
 import { PlayerScores, ApiResponse } from "../types";
 import Loading from "../src/components/Loading";
 import { useParams } from "react-router-dom";
+import { StatisticsProps } from "../src/types/types";
 
-interface ScoresProps {
-  onLoad?: () => void;
-}
-
-function Assists({ onLoad }: ScoresProps) {
+function Assists({ onLoad, selectedSeason }: StatisticsProps) {
   const { leagueId } = useParams();
   const [statistics, setStatistics] = useState<PlayerScores[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,21 +14,12 @@ function Assists({ onLoad }: ScoresProps) {
 
   useEffect(() => {
     if (leagueId) {
-      getAssists(leagueId);
+      const year = parseInt(selectedSeason.split("/")[0]);
+      getAssists(leagueId, year);
     }
-  }, [leagueId]);
+  }, [leagueId, selectedSeason]);
 
-  const currentDate = new Date();
-  const month: number = currentDate.getMonth();
-  let year: number;
-
-  if (month < 6) {
-    year = currentDate.getFullYear() - 1;
-  } else {
-    year = currentDate.getFullYear();
-  }
-
-  async function getAssists(leagueId: string) {
+  async function getAssists(leagueId: string, year: number) {
     setIsLoading(true);
     const url = `https://api-football-v1.p.rapidapi.com/v3/players/topassists?league=${leagueId}&season=${year}`;
     const options = {
@@ -90,9 +78,11 @@ function Assists({ onLoad }: ScoresProps) {
           ))}
         </div>
       ) : (
-        <p className="text-white w-full h-full flex justify-center items-center">
-          No data available.
-        </p>
+        <div className="container_data">
+          <p className="text-white w-full h-full flex justify-center items-center">
+            Sem dados
+          </p>
+        </div>
       )}
     </div>
   );

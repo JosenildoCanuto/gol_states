@@ -118,3 +118,8 @@ body {
     flex-direction: row;
   }
 }
+
+
+.container_data{
+  padding: 4rem;
+}

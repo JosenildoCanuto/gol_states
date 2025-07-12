@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./team.css";
-import { useParams } from "react-router-dom";
 import { MatchResponse } from "../types";
 import Matche from "../src/components/Matches";
 import Loading from "../src/components/Loading";
@@ -8,10 +7,10 @@ import Loading from "../src/components/Loading";
 interface MatchesListProps {
   selectedRound: number;
   leagueId?: string;
+  seasonYear: number;
 }
 
-function Rounds({ selectedRound }: MatchesListProps) {
-  const { leagueId } = useParams();
+function Rounds({ selectedRound, leagueId, seasonYear }: MatchesListProps) {
   const [matches, setMatches] = useState<MatchResponse[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -19,14 +18,14 @@ function Rounds({ selectedRound }: MatchesListProps) {
 
   useEffect(() => {
     if (selectedRound && leagueId) {
-      getTeams(selectedRound, leagueId);
+      getTeams(selectedRound, leagueId, seasonYear);
     }
-  }, [selectedRound, leagueId]);
+  }, [selectedRound, leagueId, seasonYear]);
 
-  async function getTeams(round: number, leagueId: string) {
+  async function getTeams(round: number, leagueId: string, year: number) {
     setIsLoading(true);
     setError(null);
-    const url = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${leagueId}&season=2024&round=Regular%20Season%20-%20${round}`;
+    const url = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${leagueId}&season=${year}&round=Regular%20Season%20-%20${round}`;
     const options = {
       method: "GET",
       headers: {

@@ -1,29 +1,31 @@
 import { useEffect, useState } from "react";
 import Loading from "../src/components/Loading";
-import "./Rounds.css"
-// import React from "react";
+import "./Rounds.css";
 
 interface RoundsSelectorProps {
-    onSelectRound: (round: number) => void;
-    selectedRound: number | null;
-  }
+  onSelectRound: (round: number) => void;
+  selectedRound: number | null;
+  leagueId: string | undefined;
+  seasonYear: number; // 👈 Novo parâmetro
+}
 
-function RoundsSelect({ onSelectRound, selectedRound }:RoundsSelectorProps) {
+function RoundsSelect({ onSelectRound, selectedRound, leagueId, seasonYear }: RoundsSelectorProps) {
   const [rounds, setRounds] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    getRoundsSelect();
-  }, []);
+    if (leagueId) {
+      getRoundsSelect(leagueId, seasonYear);
+    }
+  }, [leagueId, seasonYear]);
 
-  async function getRoundsSelect() {
+  async function getRoundsSelect(leagueId: string, year: number) {
     setIsLoading(true);
     setError(null);
 
-    const url =
-      "https://api-football-v1.p.rapidapi.com/v3/fixtures/rounds?league=39&season=2024";
+    const url = `https://api-football-v1.p.rapidapi.com/v3/fixtures/rounds?league=${leagueId}&season=${year}`;
     const options = {
       method: "GET",
       headers: {
@@ -57,7 +59,7 @@ function RoundsSelect({ onSelectRound, selectedRound }:RoundsSelectorProps) {
             <button
               key={index}
               onClick={() => onSelectRound(index + 1)}
-              className={`rounds-btn ${selectedRound === index + 1 ? "selected": ''}`}
+              className={`rounds-btn ${selectedRound === index + 1 ? "selected" : ""}`}
             >
               {index + 1}
             </button>

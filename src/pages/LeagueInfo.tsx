@@ -4,9 +4,11 @@ import Leagues from "../components/Leagues";
 import Classification from "./Classification";
 import Fixtures from "../../util/getFixtures";
 import "./LeagueInfo.css";
+import { useState } from "react";
 
 function LeagueInfo() {
   const { leagueId } = useParams();
+  const [selectedSeason, setSelectedSeason] = useState("2025/2026");
 
   return (
     <div className="bgInfoLeague w-objects text-white">
@@ -18,14 +20,27 @@ function LeagueInfo() {
           <Leagues />
           <ul className="flex justify-between items-center list-disc ml-6 mt-4">
             <li className="li-color font-bold text-2xl">Últimos jogos</li>
-            <Link to={`/game-rounds/${leagueId}`}>Ver mais</Link>
+            <div className="flex gap-6 items-center">
+              <Link to={`/game-rounds/${leagueId}?season=${selectedSeason}`}>
+                Ver mais
+              </Link>
+              <select
+                value={selectedSeason}
+                onChange={(e) => setSelectedSeason(e.target.value)}
+                className="p-2.5 rounded-xl border border-gray-300 bg-white text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              >
+                <option value="2025/2026">Temporada 25/26</option>
+                <option value="2024/2025">Temporada 24/25</option>
+                <option value="2023/2024">Temporada 23/24</option>
+              </select>
+            </div>
           </ul>
         </div>
-        <Fixtures />
+        <Fixtures selectedSeason={selectedSeason} />
         <div className="bg-opacity-20 container-classification bg-zinc-900">
-          <Classification />
+          <Classification selectedSeason={selectedSeason} />
           <div className="mx-7 border-l-2 border-blue-700"></div>
-          <Carrosel />
+          <Carrosel selectedSeason={selectedSeason} />
         </div>
       </div>
     </div>

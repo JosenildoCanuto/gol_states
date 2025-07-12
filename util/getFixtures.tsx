@@ -4,29 +4,24 @@ import { useParams } from "react-router-dom";
 import Matche from "../src/components/Matches";
 import Loading from "../src/components/Loading";
 import "../src/App.css";
-// import React from "react";
 
-function Fixtures() {
+type FixturesProps = {
+  selectedSeason: string;
+};
+
+function Fixtures({ selectedSeason }: FixturesProps) {
   const { leagueId } = useParams();
   const [fixtures, setFixtures] = useState<Matches[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  const currentDate = new Date();
-  const month: number = currentDate.getMonth();
-  let year: number;
-
-  if (month < 6) {
-    year = currentDate.getFullYear() - 1;
-  } else {
-    year = currentDate.getFullYear();
-  }
+  const year = parseInt(selectedSeason.split("/")[0]);
 
   useEffect(() => {
     if (leagueId) {
       getFixtures(leagueId);
     }
-  }, [leagueId]);
+  }, [leagueId, selectedSeason]);
 
   async function getFixtures(leagueId: string) {
     setIsLoading(true);
@@ -57,7 +52,7 @@ function Fixtures() {
         <Loading />
       ) : fixtures.length > 0 ? (
         <div className="container-fixture">
-          {fixtures.slice(fixtures.length - 3, fixtures.length).map((fixture, index) => (
+          {fixtures.slice(fixtures.length - 3).map((fixture, index) => (
             <div key={index}>
               <Matche
                 id={fixture.fixture.id}
@@ -74,9 +69,11 @@ function Fixtures() {
           ))}
         </div>
       ) : (
-        <p className="text-white w-full h-full flex justify-center items-center">
-          No data available.
-        </p>
+        <div className="container_data">
+          <p className="text-white w-full h-full flex justify-center items-center">
+            Sem dados
+          </p>
+        </div>
       )}
     </div>
   );
